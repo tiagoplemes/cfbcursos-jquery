@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        #bloco{
+            width: 200px;
+            height: 200px;
+            background-color: burlywood;
+        }
+    </style>
+    <title>Escodendo texto com JQuery</title>
+</head>
+<body>
+    <h1>Esconda o texto baixo</h1>
+    <div id="div1">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos neque, sequi, nulla
+           excepturi reiciendis, est unde incidunt quo explicabo iste 
+           repudiandae nemo eaque! Nam voluptatem ad atque laudantium deserunt aliquam.
+        </p>
+    </div>
+    <br/>
+    <button id="btn_hide_jquery">Hide text Jquery</button>
+    <br/>
+    <br/>
+    <div id="bloco"></div>
+    <p id="texto"></p>
+    <script>
+        $(document).ready(()=>{
+            $("#btn_hide_jquery").click(()=>{
+                $("#div1").slideToggle();
+            })
+        });
+
+
+        $('#bloco').on({
+            click: ()=>{$('#texto').text("Clicou")},
+            mouseleave: ()=>{$('#texto').text("Saiu")},
+            mouseenter: ()=>{$('#texto').text("Entrou")},
+            dblclick: ()=>{$('#texto').text("Duplo click")}
+        })
+    </script>
+</body>
+</html>
