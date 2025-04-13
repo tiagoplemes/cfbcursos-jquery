@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopPropagtion</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        div{border: 1px solid red; padding: 10px;}
+        p{border: 1px solid blue; padding: 10px;}
+        span{border: 1px solid green; padding: 10px;}
+        ul{border: 1px solid rgb(82, 237, 251); padding: 10px;}
+        li{border: 1px solid rgb(255, 173, 66); padding: 10px;}
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <p id="p1"> texto do parágrafo <br/><br/><br/>
+            <span id="span1"> texto do span, Jquery </span>
+        </p>
+    </div>
+    <br/> <br/> <br/> <br/> <br/>
+
+
+    <div id="div2">
+        <ul id="ul1">
+            <li id="li1">
+                <p id="p2">parágrafo
+                    <span id="span2">span</span>
+                </p>
+                
+            </li>
+        </ul>
+    </div>
+
+    <br/> <br/> <br/> <br/> <br/>
+
+
+    <div id="div3">
+        <ul id="ul2">
+            <li id="li2">
+                <p id="p3">parágrafo
+                    <span id="span3">span</span>
+                </p>
+                
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        $('#div1').click(() => {
+            alert("Evento disparado da DIV")
+        })
+
+        $('#p1').click((varEvent) => {
+            alert("Evento disparado da P");
+            varEvent.stopPropagation();
+        })
+
+        $('#span1').click((varEvent) => {
+            alert("Evento disparado da span")
+            varEvent.stopPropagation();
+        })
+
+        $('#span2').parentsUntil('#ul1').css({
+            'border': '1px solid violet'
+        })
+
+        $('#span3').parentsUntil('#ul1').css({
+            'border': '1px solid red'
+        })
+    
+        /* 
+            $('#span3').prevUntil('#ul1').css({'border': '1px solid red'})
+            --- Irmãos anterior até ---
+
+            $('#span3').next('#ul1').css({'border': '1px solid red'})
+            --- próximo elemento irmão
+
+            $('#span3').siblings('#ul1').css({'border': '1px solid red'})
+            --- seleciona todos irmãos 
+        */
+    </script>
+</body>
+</html>

@@ -17,7 +17,15 @@
 
     <p id="resultado"></p>
     <script>
-        
+        $(document).on({
+            click: (tomate) => {$("#resultado").text(tomate.type + ": " + tomate.which)},
+            keydown: (limao) => {
+                $('#resultado').text(limao.type + ": " + limao.which)
+                if(event.which == 13){
+                    alert('ENTER Pressionado')
+                }
+            }
+        })
     </script>
 </body>
 </html>
